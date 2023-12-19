@@ -13,7 +13,7 @@ void push_stack(stack_t **top, unsigned int data)
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
-		fprintf(stderr,"Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -38,25 +38,24 @@ void push_stack(stack_t **top, unsigned int data)
  * @str: pointer to a atring
  * Return: 0 if str is not an integer 1 otherwise
  */
-int is_integer(char *str) {
-
+int is_integer(char *str)
+{
 	if (*str == '+' || *str == '-')
 	{
 		str++;
 	}
 
 	if (!*str)
-	{
-		return 0;
-	}
+		return (0);
 
 	while (*str)
 	{
-		if (!isdigit((unsigned char)*str)) {
-			return 0;
+		if (!isdigit((unsigned char)*str))
+		{
+			return (0);
 		}
 		str++;
 	}
 
-	return 1;
+	return (1);
 }

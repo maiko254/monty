@@ -6,7 +6,7 @@
  * @n: line number in monty bytecode file
  * Return: void
  */
-void display_stack(stack_t **top, unsigned int n)
+void display_stack(stack_t **top, __attribute__((unused)) unsigned int n)
 {
 	stack_t *temp;
 

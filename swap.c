@@ -18,14 +18,14 @@ void swap(stack_t **stack, unsigned int data)
 
 	temp1 = *stack;
 	temp2 = (*stack)->next;
-	
+
 	temp1->next = temp2->next;
 	temp1->prev = temp2;
 	temp2->next = temp1;
 	temp2->prev = NULL;
-	
+
 	if (temp1->next != NULL)
 		temp1->next->prev = temp1;
-	
+
 	*stack = temp2;
 }
