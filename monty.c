@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 	size_t n;
 	char *opcode, *num, *str;
 	unsigned int a, i;
+	unsigned int ln;
 	int found;
 
 	if (argc != 2)
@@ -49,6 +50,7 @@ int main(int argc, char **argv)
 	filename = argv[1];
 	line = NULL;
 	n = 0;
+	ln = 0;
 
 	fp = fopen(filename, "r");
 	if (fp == NULL)
@@ -58,12 +60,13 @@ int main(int argc, char **argv)
 	}
 	while (getline(&line, &n, fp) != -1)
 	{
+		ln++;
 		opcode = strtok(line, " ");
 		num = strtok(NULL, " ");
 		str = strtok(num, "\n");
 		if (str != NULL && !is_integer(str))
 		{
-			fprintf(stderr, "L%s: usage: push integer", str);
+			fprintf(stderr, "L%u: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
 		}
 		if (str != NULL)
@@ -84,7 +87,7 @@ int main(int argc, char **argv)
 		}
 		if (found == 0)
 		{
-			fprintf(stderr, "L%u: unknown instruction %s", a, opcode);
+			fprintf(stderr, "L%u: unknown instruction %s", ln, opcode);
 			exit(EXIT_FAILURE);
 		}
 	}
